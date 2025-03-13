@@ -1,0 +1,33 @@
+Steps to Resolve:
+Fetch the latest changes from the remote repository:
+
+bash
+Copy
+Edit
+git fetch origin
+Merge the changes into your local branch:
+
+bash
+Copy
+Edit
+
+git pull origin main --rebase
+
+This ensures that your local branch is up-to-date with the remote before pushing.
+
+Try pushing again:
+
+bash
+Copy
+Edit
+
+git push origin main
+
+Alternative (Force Push - Only if Necessary)
+If you are sure that your local changes should overwrite the remote, you can use a force push:
+
+bash
+Copy
+Edit
+
+git push origin main --force
