@@ -1,3 +1,6 @@
+// https://www.youtube.com/watch?v=AxNNVECce8c&ab_channel=takeUforward
+// teaching from here
+
 #include <bits/stdc++.h>
 using namespace std;
  
