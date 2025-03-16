@@ -3,8 +3,7 @@
 // https://cses.fi/problemset/task/1158/
 
 #include <iostream>
-#include <algorithm>
-
+#include <bits/stdc++.h>
 using namespace std;
 
 // Speed
@@ -24,22 +23,23 @@ void solve() {
       cin >> value[i];
     }
 
-    // 1D DP array: dp[w] will store the maximum value for a given weight capacity w
-    ll dp[W + 1] = {0};
+    vector<ll>pre(W+1,0);
 
     // Process each item
     for (ll i = 1; i <= N; i++) {
-        // Update the dp array in reverse order to avoid overwriting values
-        for (ll w = W; w >= weight[i]; w--) {
-            // dp[w] is the max of either:
-            // - not taking the item: dp[w]
-            // - taking the item: dp[w - weight[i]] + value[i]
-            dp[w] = max(dp[w], dp[w - weight[i]] + value[i]);
-        }
-    }
+        vector<ll>cur(W+1,0);
+         for (ll w = 0; w <= W; w++) {
+            // If we don't take the current item
+            cur[w] = pre[w];
 
-    // The answer will be in dp[W], which is the maximum value with full capacity W
-    cout << dp[W] << endl;
+            // If we can take the current item (i.e., weight[i] <= w)
+            if (w >= weight[i]) {
+                cur[w] = max(pre[w], pre[w - weight[i]] + value[i]);
+            }
+        }
+        pre=cur;
+    }
+   cout << pre[W] << endl;
 }
 
 int main() {
